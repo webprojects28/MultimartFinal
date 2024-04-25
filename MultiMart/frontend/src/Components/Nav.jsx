@@ -12,17 +12,15 @@ import { useNavigate } from "react-router-dom";
 function Nav({setopenCart,openCart,setRefreshPage,refreshPage}) {
    const navigate = useNavigate();
   function logoutHandler() {
-    axios.get("http://localhost:8000/logout")
-      .then((res) => {
-        console.log("res is:",res);
-        if(res.data.status){
-          navigate(`/login`);
-        }
+    axios.get("http://localhost:8000/logout", {
+      withCredentials: true // Ensure cookies are sent with the request
+    })
+      .then(res=>{
+          if(res.data.status){
+            navigate('/login')
+          }
       })
-      .catch((err) => {
-        console.log(err ," is the error");
-      });
-    console.log("logout");
+  
   }
   function chatBotHandler() {
     window.location.replace('http://127.0.0.1:5000/');

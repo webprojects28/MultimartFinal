@@ -30,7 +30,7 @@ router.get("/verify", verifyUser , (req, res) => {
 
 router.get('/logout',(req,res)=>{
   console.log("logout is success")
-  res.clearCookie('token')
+  res.clearCookie('token');
   return res.json({status:true})
 })
 
