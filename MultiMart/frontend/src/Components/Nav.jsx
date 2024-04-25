@@ -20,11 +20,14 @@ function Nav({setopenCart,openCart,setRefreshPage,refreshPage}) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err ," is the error");
       });
     console.log("logout");
   }
-
+  function chatBotHandler() {
+    window.location.replace('http://127.0.0.1:5000/');
+  }
+  
   useEffect(() => {
     axios.get("http://localhost:8000/product").then((response) => {
       setprodlen(response.data.length);
@@ -57,7 +60,7 @@ function Nav({setopenCart,openCart,setRefreshPage,refreshPage}) {
   </div>
 
   <div className="header-user-actions">
-
+    <button onClick={()=>chatBotHandler()} >ChatBot</button>
     <button className="action-btn">
       <ion-icon name="person-outline"></ion-icon>
     </button>
