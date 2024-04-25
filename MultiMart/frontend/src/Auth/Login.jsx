@@ -46,7 +46,7 @@ function Login() {
           </div>
         </div>
        
-        <div className="login-forgot-password" onClick={()=>{navigate('/forgotpassword')}}>Forgot Password ? <span>Click here!</span></div>
+        {/* <div className="login-forgot-password" onClick={()=>{navigate('/forgotpassword')}}>Forgot Password ? <span>Click here!</span></div> */}
         <div className="login-submit-container">
          
           <div className='login-submit login-gray' onClick={()=>{navigate('/signup')}} >SignUp</div>

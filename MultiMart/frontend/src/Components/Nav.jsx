@@ -8,8 +8,22 @@ import { Outlet, Link } from "react-router-dom";
 import { useState ,useEffect } from 'react';
 import Cart from './Cart';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 function Nav({setopenCart,openCart,setRefreshPage,refreshPage}) {
-
+   const navigate = useNavigate();
+  function logoutHandler() {
+    axios.get("http://localhost:8000/logout")
+      .then((res) => {
+        console.log("res is:",res);
+        if(res.data.status){
+          navigate(`/login`);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log("logout");
+  }
 
   useEffect(() => {
     axios.get("http://localhost:8000/product").then((response) => {
@@ -50,11 +64,11 @@ function Nav({setopenCart,openCart,setRefreshPage,refreshPage}) {
     
 
 
-
     <button className="action-btn" onClick={()=>setopenCart(!openCart)}>
       <ion-icon name="bag-handle-outline"></ion-icon>
       <span className="count">{prodlen}</span>
     </button>
+    <button onClick={()=>logoutHandler()} >Logout</button>
     
 
   </div>
